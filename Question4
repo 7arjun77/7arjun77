@@ -1,0 +1,63 @@
+package ttttttttttert.jtryfug;
+
+import java.util.concurrent.TimeUnit;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.firefox.FirefoxDriver;
+
+public class  Question4{
+	public static void main(String[] args) throws InterruptedException {
+		//System.setProperty("webdriver.gecko.driver","src//main//resources//geckodriver.exe");
+		//WebDriver driver = new FirefoxDriver();
+		WebDriver driver = new ChromeDriver();
+		driver.get("https://www.makemytrip.com/");
+		driver.manage().timeouts().implicitlyWait(7, TimeUnit.SECONDS) ;
+		driver.manage().window().maximize();
+		//Thread.sleep(4000);;
+		System.out.println("passed!!!!");
+		if(driver.findElement(By.xpath("/html/body/div[1]/div/div[1]/div[1]/div[1]/a/picture/img")).isDisplayed()) {
+			System.out.println("Logo is present");
+		}
+		//FLIGHTS
+		driver.findElement(By.xpath("//*[@id=\"SW\"]/div[1]/div[2]/div/div/nav/ul/li[1]/div/a")).click();
+		//WebElement flight = driver.findElement(By.xpath("//*[@id=\"SW\"]/div[1]/div[2]/div/div/nav/ul/li[1]/div/a"));
+		//flight.click();
+
+		
+		
+		
+		
+		//ONEWAY
+		driver.findElement(By.xpath("//*[@id=\"root\"]/div/div[2]/div/div/div[1]/ul/li[1]")).click();
+		
+		//FROM
+		driver.findElement(By.xpath("//*[@id=\"root\"]/div/div[2]/div/div/div[2]/div[1]/div[1]/label/span")).click();
+		driver.findElement(By.xpath("//*[@id=\"react-autowhatever-1-section-0-item-0\"]/div/div[1]/p[1]")).click();//MUMBAI
+		
+		//TO
+		driver.findElement(By.xpath("//*[@id=\"root\"]/div/div[2]/div/div/div[2]/div[1]/div[2]/label/span")).click();
+		driver.findElement(By.xpath("//*[@id=\"react-autowhatever-1-section-0-item-1\"]/div/div[1]/p[1]")).click();//NEWDELHI
+	
+		
+		//DEPARTUREDATE
+		driver.findElement(By.xpath("//*[@id=\"root\"]/div/div[2]/div/div/div[2]/div[1]/div[3]/label/span")).click();
+		driver.findElement(By.xpath("//*[@id=\"root\"]/div/div[2]/div/div/div[2]/div[1]/div[3]/div[1]/div/div/div/div[2]/div/div[2]/div[2]/div[3]/div[3]/div[2]")).click();
+		
+		
+		//SEARCH
+		driver.findElement(By.xpath("//*[@id=\"root\"]/div/div[2]/div/div/div[2]/p/a")).click();
+		
+		String url = driver.getCurrentUrl();
+		if (url.equalsIgnoreCase("https://www.makemytrip.com/flight/search?itinerary=BOM-DEL-10/07/2023&tripType=O&paxType=A-1_C-0_I-0&intl=false&cabinClass=E&ccde=IN&lang=eng")) {
+			System.out.println("successs !!!!!");
+		}
+		
+		//driver.quit();
+	}
+	
+	
+
+}
