@@ -1,0 +1,49 @@
+package SDETAssignment.assignment;
+
+import java.awt.AWTException;
+import java.awt.Robot;
+import java.util.concurrent.TimeUnit;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.interactions.Actions;
+import org.testng.annotations.Test;
+
+import com.aventstack.extentreports.ExtentTest;
+import com.aventstack.extentreports.Status;
+import SDETAssignment.Pages.homepage;
+
+public class mavenPOM06 extends basetest {
+	@Test
+	public void pageobjmodelquestion6() throws InterruptedException, AWTException {
+		driver.get("https://www.makemytrip.com/");
+		driver.manage().timeouts().implicitlyWait(7, TimeUnit.SECONDS) ;
+		driver.manage().window().maximize();
+		//Thread.sleep(4000);
+		ExtentTest test = extent.createTest("MakeMYtRIP test");
+		System.out.println("passed!!!!");
+		test.log(Status.INFO, "test1");
+		test.info("details of info");
+		homepage pg = new homepage(driver);
+		if(pg.logoisdisplayed()) {
+			System.out.println("Logo is present");
+			test.pass("logo is present");
+		}
+		else {
+			test.fail("logo not present");
+		}
+		
+		pg.clickonflights();
+		pg.clickonONEWAY();
+		pg.clickFROM();
+		pg.clickMUMBAI();
+		pg.clickTO();
+		pg.clickDelhi();
+		pg.clickDATE1();
+		pg.clickDate2();
+		pg.clickSearch();
+		
+	}
+
+}
